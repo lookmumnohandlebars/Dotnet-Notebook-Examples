@@ -1,0 +1,92 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Shake It Shake It Baby Now!\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {
+    "dotnet_interactive": {
+     "language": "csharp"
+    },
+    "polyglot_notebook": {
+     "kernelName": "csharp"
+    },
+    "vscode": {
+     "languageId": "polyglot-notebook"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "var shakeItUpBaby = \"Shake It Up Baby!\";"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {
+    "dotnet_interactive": {
+     "language": "csharp"
+    },
+    "polyglot_notebook": {
+     "kernelName": "csharp"
+    },
+    "vscode": {
+     "languageId": "polyglot-notebook"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "Shake It Up Baby"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "data": {
+      "text/plain": [
+       "Twist And Shout!"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "shakeItUpBaby.Display();\n",
+    "\"Twist And Shout!\".Display();"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": ".NET (C#)",
+   "language": "C#",
+   "name": ".net-csharp"
+  },
+  "language_info": {
+   "name": "csharp"
+  },
+  "polyglot_notebook": {
+   "kernelInfo": {
+    "defaultKernelName": "csharp",
+    "items": [
+     {
+      "aliases": [],
+      "name": "csharp"
+     }
+    ]
+   }
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}

@@ -1,0 +1,10 @@
+version: "3.2"
+services:
+  sql-server-db:
+    container_name: sql-server-db
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    ports:
+      - "1433:1433"
+    environment:
+      SA_PASSWORD: "Je!!yBaB13S"
+      ACCEPT_EULA: "Y" # Connection String: Server=127.0.0.1,1433;Database=Master;User Id=SA;Password=Je!!yBaB13S
