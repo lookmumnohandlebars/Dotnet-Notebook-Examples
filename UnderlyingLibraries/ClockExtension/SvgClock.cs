@@ -11,58 +11,58 @@ using static Microsoft.DotNet.Interactive.Formatting.PocketViewTags;
 
 namespace ClockExtension
 {
-    public static class SvgClock
+  public static class SvgClock
+  {
+    public static IHtmlContent DrawSvgClock(this DateTimeOffset datetime) =>
+        datetime.DateTime.DrawSvgClock();
+
+    public static IHtmlContent DrawSvgClock(this DateTime datetime)
     {
-        public static IHtmlContent DrawSvgClock(this DateTimeOffset datetime) =>
-            datetime.DateTime.DrawSvgClock();
+      var hours = datetime.Hour % 12;
+      var minutes = datetime.Minute;
+      var seconds = datetime.Second;
 
-        public static IHtmlContent DrawSvgClock(this DateTime datetime)
-        {
-            var hours = datetime.Hour % 12;
-            var minutes = datetime.Minute;
-            var seconds = datetime.Second;
+      return DrawSvgClock(hours, minutes, seconds);
+    }
 
-            return DrawSvgClock(hours, minutes, seconds);
-        }
-
-        public static IHtmlContent DrawSvgClock(int hours, int minutes, int seconds)
-        {
-            var id = "clockExtension" + Guid.NewGuid().ToString("N");
-            return div[id: id](
-                svg[viewBox: "0 0 40 40"](
-                    _.defs(
-                        _.radialGradient[id: "grad1", cx: "50%", cy: "50%", r: "50%", fx: "50%", fy: "50%"](
-                            _.stop[offset: "0%", style: "stop-color:#512bd4;stop-opacity:0"],
-                            _.stop[offset: "100%", style: "stop-color:#512bd4;stop-opacity:.5"])),
-                    circle[cx: "20", cy: "20", r: "19", fill: "#dedede"],
-                    circle[cx: "20", cy: "20", r: "19", fill: "url(#grad1)"],
-                    g[@class: "marks"](
-                        line[x1: 15, y1: 0, x2: 16, y2: 0],
-                        line[x1: 15, y1: 0, x2: 16, y2: 0],
-                        line[x1: 15, y1: 0, x2: 16, y2: 0],
-                        line[x1: 15, y1: 0, x2: 16, y2: 0],
-                        line[x1: 15, y1: 0, x2: 16, y2: 0],
-                        line[x1: 15, y1: 0, x2: 16, y2: 0],
-                        line[x1: 15, y1: 0, x2: 16, y2: 0],
-                        line[x1: 15, y1: 0, x2: 16, y2: 0],
-                        line[x1: 15, y1: 0, x2: 16, y2: 0],
-                        line[x1: 15, y1: 0, x2: 16, y2: 0],
-                        line[x1: 15, y1: 0, x2: 16, y2: 0],
-                        line[x1: 15, y1: 0, x2: 16, y2: 0]),
-                    text[x: 0, y: 0, @class: "text"]("Countdown to Eternal Doom"),
-                    line[x1: 0, y1: 0, x2: 9, y2: 0, @class: "hour"],
-                    line[x1: 0, y1: 0, x2: 13, y2: 0, @class: "minute"],
-                    line[x1: 0, y1: 0, x2: 16, y2: 0, @class: "seconds"],
-                    circle[cx: 20, cy: 20, r: 0.7, @class: "pin"]
-                ),
-                style[type: "text/css"](Css()),
-                script(@"
+    public static IHtmlContent DrawSvgClock(int hours, int minutes, int seconds)
+    {
+      var id = "clockExtension" + Guid.NewGuid().ToString("N");
+      return div[id: id](
+          svg[viewBox: "0 0 40 40"](
+              _.defs(
+                  _.radialGradient[id: "grad1", cx: "50%", cy: "50%", r: "50%", fx: "50%", fy: "50%"](
+                      _.stop[offset: "0%", style: "stop-color:#512bd4;stop-opacity:0"],
+                      _.stop[offset: "100%", style: "stop-color:#512bd4;stop-opacity:.5"])),
+              circle[cx: "20", cy: "20", r: "19", fill: "#dedede"],
+              circle[cx: "20", cy: "20", r: "19", fill: "url(#grad1)"],
+              g[@class: "marks"](
+                  line[x1: 15, y1: 0, x2: 16, y2: 0],
+                  line[x1: 15, y1: 0, x2: 16, y2: 0],
+                  line[x1: 15, y1: 0, x2: 16, y2: 0],
+                  line[x1: 15, y1: 0, x2: 16, y2: 0],
+                  line[x1: 15, y1: 0, x2: 16, y2: 0],
+                  line[x1: 15, y1: 0, x2: 16, y2: 0],
+                  line[x1: 15, y1: 0, x2: 16, y2: 0],
+                  line[x1: 15, y1: 0, x2: 16, y2: 0],
+                  line[x1: 15, y1: 0, x2: 16, y2: 0],
+                  line[x1: 15, y1: 0, x2: 16, y2: 0],
+                  line[x1: 15, y1: 0, x2: 16, y2: 0],
+                  line[x1: 15, y1: 0, x2: 16, y2: 0]),
+              text[x: 0, y: 0, @class: "text"]("Countdown Clock"),
+              line[x1: 0, y1: 0, x2: 9, y2: 0, @class: "hour"],
+              line[x1: 0, y1: 0, x2: 13, y2: 0, @class: "minute"],
+              line[x1: 0, y1: 0, x2: 16, y2: 0, @class: "seconds"],
+              circle[cx: 20, cy: 20, r: 0.7, @class: "pin"]
+          ),
+          style[type: "text/css"](Css()),
+          script(@"
 let svg = document.querySelector('svg');
 "
-                ));
+          ));
 
-            IHtmlContent Css() =>
-                new HtmlString($@"
+      IHtmlContent Css() =>
+          new HtmlString($@"
 #{id} svg {{
   width: 400px;
   fill: white;
@@ -151,6 +151,6 @@ let svg = document.querySelector('svg');
   fill: #512bd4;
   stroke: none;
 }}");
-        }
     }
+  }
 }

@@ -1,1 +1,1 @@
-public record Coordinates(int x, int y, int z);
+public record GalacticCoordinates(int x, int y, int z);
